@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Box To Box — Batay San Fwontyè | Haïti vs Dominican Republic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --red: #C41E2A;
+    --red-dark: #9B1520;
+    --blue: #00247D;
+    --blue-deep: #001847;
+    --blue-light: #E8EDF8;
+    --gold: #D4A843;
+    --gold-light: #F0D078;
+    --black: #1A1A1A;
+    --white: #FFFFFF;
+    --gray-50: #F8F9FA;
+    --gray-100: #F1F3F5;
+    --gray-200: #E2E5E9;
+    --gray-400: #ADB5BD;
+    --gray-600: #6C757D;
+    --gray-800: #2D3436;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Source Sans 3', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--gray-800);
+    background: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+.nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue); }
+.nav-cta {
+    background: var(--red) !important;
+    color: var(--white) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    transition: background 0.2s, transform 0.2s;
+}
+.nav-cta:hover { background: var(--red-dark) !important; transform: translateY(-1px); }
+
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+.nav-hamburger span {
+    width: 24px; height: 2px;
+    background: var(--gray-800);
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ===== HERO ===== */
+.hero {
+    padding-top: 64px;
+    background: var(--white);
+    overflow: hidden;
+}
+.hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+.hero-text {
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero-presented {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+}
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 0.95;
+    color: var(--black);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+.hero-title .vs {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.22em;
+    letter-spacing: 6px;
+    color: var(--blue);
+    margin: 0.4em 0;
+    font-weight: 500;
+}
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--gray-600);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+}
+.hero-date {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 2rem;
+}
+.hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.btn-red {
+    background: var(--red);
+    color: var(--white);
+    box-shadow: 0 2px 12px rgba(196,30,42,0.25);
+}
+.btn-red:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(196,30,42,0.35); }
+.btn-blue {
+    background: var(--blue);
+    color: var(--white);
+    box-shadow: 0 2px 12px rgba(0,36,125,0.2);
+}
+.btn-blue:hover { background: var(--blue-deep); transform: translateY(-2px); }
+.btn-outline {
+    background: transparent;
+    color: var(--blue);
+    border: 1.5px solid var(--blue);
+}
+.btn-outline:hover { background: var(--blue); color: var(--white); transform: translateY(-2px); }
+.btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--black);
+    box-shadow: 0 2px 12px rgba(212,168,67,0.3);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(212,168,67,0.4); }
+
+.hero-poster {
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+}
+.hero-poster img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== EVENT INFO BAR ===== */
+.info-bar {
+    background: var(--blue);
+    margin-top: 3rem;
+}
+.info-bar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+.info-item {
+    padding: 1.2rem 1rem;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+.info-item:last-child { border-right: none; }
+.info-item .label {
+    font-family: var(--font-heading);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0.3rem;
+}
+.info-item .value {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+/* ===== SECTIONS COMMON ===== */
+.section { padding: 5rem 2rem; position: relative; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.6rem;
+}
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    color: var(--black);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+.section-subtitle {
+    font-size: 1.05rem;
+    color: var(--gray-600);
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+/* ===== ABOUT ===== */
+.about { background: var(--gray-50); }
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 2.5rem;
+}
+.about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--gray-600);
+    margin-bottom: 1.5rem;
+}
+.about-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.about-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    color: var(--gray-800);
+    font-weight: 600;
+}
+.about-bullets li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 8px; height: 8px;
+    margin-top: 0.45rem;
+    background: var(--red);
+    border-radius: 50%;
+}
+.about-visual img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+}
+
+/* ===== TICKETS ===== */
+.tickets { background: var(--white); }
+.tickets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+.ticket-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.ticket-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+.ticket-card.vip { border-color: var(--gold); }
+.ticket-header {
+    padding: 2rem;
+    background: var(--blue);
+    text-align: center;
+    position: relative;
+}
+.ticket-card.vip .ticket-header {
+    background: linear-gradient(135deg, #2a1f0a 0%, #1a1409 100%);
+}
+.ticket-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+}
+.ticket-card.standard .ticket-header::after { background: var(--red); }
+.ticket-card.vip .ticket-header::after { background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); }
+.ticket-type {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0.5rem;
+}
+.ticket-card.vip .ticket-type { color: var(--gold); }
+.ticket-price {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--white);
+}
+.ticket-price .currency {
+    font-family: var(--font-heading);
+    font-size: 0.4em;
+    vertical-align: super;
+    color: rgba(255,255,255,0.5);
+}
+.ticket-body { padding: 2rem; }
+.ticket-perks {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-bottom: 1.5rem;
+}
+.ticket-perks li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.93rem;
+    color: var(--gray-800);
+}
+.ticket-perks li::before {
+    content: '✓';
+    flex-shrink: 0;
+    width: 20px; height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 50%;
+}
+.ticket-card.standard .ticket-perks li::before { background: rgba(196,30,42,0.1); color: var(--red); }
+.ticket-card.vip .ticket-perks li::before { background: rgba(212,168,67,0.15); color: var(--gold); }
+.ticket-btn { width: 100%; text-align: center; justify-content: center; }
+.ticket-note {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+}
+.ticket-note svg { width: 14px; height: 14px; vertical-align: -2px; margin-right: 4px; }
+
+/* ===== LIVESTREAM ===== */
+.livestream {
+    background: var(--blue-deep);
+    color: var(--white);
+}
+.livestream .section-label { color: var(--gold); }
+.livestream .section-title { color: var(--white); }
+.livestream .section-subtitle { color: rgba(255,255,255,0.5); }
+.livestream-content {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 3rem;
+    align-items: start;
+}
+.video-wrapper {
+    aspect-ratio: 16/9;
+    background: #0a0e1a;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+}
+.video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.play-icon {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(196,30,42,0.4);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.play-icon:hover { transform: scale(1.1); }
+.play-icon svg { width: 24px; height: 24px; fill: var(--white); margin-left: 3px; }
+.video-status {
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+}
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--red);
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--white);
+}
+.countdown-panel {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 2rem;
+}
+.countdown-label {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.countdown-block {
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    padding: 0.8rem 0.3rem;
+}
+.countdown-num {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--white);
+    line-height: 1;
+}
+.countdown-unit {
+    font-family: var(--font-heading);
+    font-size: 0.58rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-top: 0.2rem;
+}
+.stream-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+.stream-actions .btn { width: 100%; justify-content: center; font-size: 0.8rem; padding: 0.8rem; }
+
+/* ===== SPONSORS ===== */
+.sponsors { background: var(--gray-50); }
+.sponsor-categories { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 2rem; }
+.sponsor-cat-label {
+    font-family: var(--font-heading);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+.sponsor-logos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+}
+.sponsor-logo {
+    aspect-ratio: 16/9;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    transition: border-color 0.3s;
+}
+.sponsor-logo:hover { border-color: var(--blue); }
+.sponsor-ctas { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+
+/* ===== EXPERIENCE ===== */
+.experience { background: var(--white); }
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.2rem;
+    margin-top: 2.5rem;
+}
+.exp-card {
+    text-align: center;
+    padding: 1.8rem 1rem;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.exp-card:hover { transform: translateY(-3px); border-color: var(--blue); }
+.exp-icon { font-size: 1.8rem; margin-bottom: 0.6rem; display: block; }
+.exp-name {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gray-800);
+}
+
+/* ===== FUTURE ===== */
+.future { background: var(--blue-deep); color: var(--white); }
+.future .section-label { color: var(--gold); }
+.future .section-title { color: var(--white); }
+.future .section-subtitle { color: rgba(255,255,255,0.5); }
+.timeline {
+    margin-top: 3rem;
+    position: relative;
+    padding-left: 3rem;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--red), var(--gold), rgba(255,255,255,0.2));
+}
+.timeline-item { position: relative; padding-bottom: 2.5rem; padding-left: 1.5rem; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+    position: absolute;
+    left: -3rem; top: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--blue-deep);
+}
+.timeline-dot::after { content: ''; width: 8px; height: 8px; border-radius: 50%; }
+.timeline-item:nth-child(1) .timeline-dot { border-color: var(--red); }
+.timeline-item:nth-child(1) .timeline-dot::after { background: var(--red); }
+.timeline-item:nth-child(2) .timeline-dot { border-color: var(--gold); }
+.timeline-item:nth-child(2) .timeline-dot::after { background: var(--gold); }
+.timeline-item:nth-child(3) .timeline-dot { border-color: var(--gold); }
+.timeline-item:nth-child(3) .timeline-dot::after { background: var(--gold); }
+.timeline-item:nth-child(4) .timeline-dot { border-color: var(--white); }
+.timeline-item:nth-child(4) .timeline-dot::after { background: var(--white); }
+.timeline-date {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+}
+.timeline-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+}
+.timeline-desc {
+    font-size: 0.93rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--black);
+    padding: 3rem 2rem;
+}
+.footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+.footer-brand .footer-logo { margin-bottom: 0.5rem; }
+.footer-tagline {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.footer-socials { display: flex; gap: 0.7rem; }
+.footer-socials a {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: border-color 0.3s, color 0.3s;
+}
+.footer-socials a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-col-title {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.footer-links a {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.25);
+}
+.footer-bottom a { color: var(--gold); text-decoration: none; }
+
+/* ===== MOBILE FLOATING CTAs ===== */
+.mobile-ctas {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    z-index: 999;
+    padding: 0.6rem;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--gray-200);
+}
+.mobile-ctas .btn { flex: 1; justify-content: center; font-size: 0.7rem; padding: 0.65rem 0.5rem; }
+.btn-whatsapp { background: #25D366; color: var(--white); }
+.btn-whatsapp:hover { background: #1da851; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .livestream-content { grid-template-columns: 1fr; }
+    .countdown-panel { max-width: 500px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: var(--white);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid var(--gray-200);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .hero-inner { grid-template-columns: 1fr; text-align: center; padding: 2rem 1.5rem 0; }
+    .hero-ctas { justify-content: center; }
+    .hero-poster { max-width: 500px; margin: 0 auto; }
+    .info-bar-inner { grid-template-columns: repeat(3, 1fr); }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .tickets-grid { grid-template-columns: 1fr; max-width: 420px; }
+    .experience-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .section { padding: 3.5rem 1.5rem; }
+    .mobile-ctas { display: flex; }
+    body { padding-bottom: 60px; }
+    .sponsor-ctas { flex-direction: column; }
+    .sponsor-ctas .btn { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+    .info-bar-inner { grid-template-columns: repeat(2, 1fr); }
+    .experience-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-ctas { flex-direction: column; align-items: center; }
+    .hero-ctas .btn { width: 100%; max-width: 280px; justify-content: center; }
+    .countdown { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav">
+    <a href="/boxtobox/" class="nav-logo"><img src="img/boxtobox-logo.jpg" alt="Boxe To Boxe" style="height:40px;border-radius:4px;"></a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="/boxtobox/">Home</a></li>
+        <li><a href="/boxtobox-tickets/">Tickets</a></li>
+        <li><a href="/boxtobox-live/">Live</a></li>
+        <li><a href="/boxtobox-sponsors/">Sponsors</a></li>
+        <li><a href="/boxtobox-media/">Media</a></li>
+        <li><a href="/boxtobox-about/">About</a></li>
+        <li><a href="/boxtobox-contact/">Contact</a></li>
+        <li><a href="/boxtobox-tickets/" class="nav-cta">Acheter Ticket</a></li>
+    </ul>
+    <div class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <p class="hero-presented">Box To Box & 48HoursReady.com Présentent</p>
+            <h1 class="hero-title">
+                BATAY SAN
+                <span class="vs">Haïti &nbsp; vs &nbsp; Dominican Republic</span>
+                FWONTYÈ
+            </h1>
+            <p class="hero-subtitle">Combat international. Culture. Connexion.</p>
+            <p class="hero-date">30 Mai 2026 — Parc Sainte-Thérèse</p>
+            <div class="hero-ctas">
+                <a href="/boxtobox-tickets/" class="btn btn-red">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                    Acheter Ticket
+                </a>
+                <a href="/boxtobox-live/" class="btn btn-blue">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Regarder en Live
+                </a>
+                <a href="/boxtobox-sponsors/" class="btn btn-outline">Devenir Sponsor</a>
+            </div>
+        </div>
+        <div class="hero-poster">
+            <img src="img/fight-poster.jpg" alt="Batay San Fwontyè - Caribbean Fight Night">
+        </div>
+    </div>
+</section>
+
+<!-- EVENT INFO BAR -->
+<div class="info-bar">
+    <div class="info-bar-inner">
+        <div class="info-item"><div class="label">Date</div><div class="value">30 Mai</div></div>
+        <div class="info-item"><div class="label">Lieu</div><div class="value">Parc Ste-Thérèse</div></div>
+        <div class="info-item"><div class="label">Tickets</div><div class="value">1,000 Gdes</div></div>
+        <div class="info-item"><div class="label">VIP</div><div class="value">2,500 Gdes</div></div>
+        <div class="info-item"><div class="label">Live</div><div class="value">YouTube</div></div>
+        <div class="info-item"><div class="label">Main Event</div><div class="value">Haïti vs RD</div></div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section about">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">L'Événement</p>
+            <h2 class="section-title">Un mouvement, pas seulement un événement</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>Batay San Fwontyè est bien plus qu'un simple événement sportif. C'est une vitrine internationale pour Haïti, utilisant la boxe et le MMA comme vecteurs de fierté nationale, de discipline et de connexion entre les peuples.</p>
+                <ul class="about-bullets">
+                    <li>Boxe et MMA international — Haïti vs Dominican Republic</li>
+                    <li>Haïti positionnée à travers le sport sur la scène mondiale</li>
+                    <li>Événements tous les 6 mois — un circuit grandissant</li>
+                    <li>Académie de combat prévue pour 2027</li>
+                </ul>
+            </div>
+            <div class="about-visual reveal">
+                <img src="img/arena.jpg" alt="Batay San Fwontyè Arena">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TICKETS -->
+<section class="section tickets" id="tickets">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Billetterie</p>
+            <h2 class="section-title">Réservez votre place</h2>
+            <p class="section-subtitle">Chaque billet inclut un QR code unique pour une entrée rapide et sécurisée.</p>
+        </div>
+        <div class="tickets-grid">
+            <div class="ticket-card standard reveal">
+                <div class="ticket-header">
+                    <div class="ticket-type">Standard</div>
+                    <div class="ticket-price">1,000 <span class="currency">GDES</span></div>
+                </div>
+                <div class="ticket-body">
+                    <ul class="ticket-perks">
+                        <li>Accès général à l'événement</li>
+                        <li>Vue sur le ring</li>
+                        <li>Accès zone food village</li>
+                        <li>QR code billet numérique</li>
+                    </ul>
+                    <a href="/boxtobox-tickets/" class="btn btn-red ticket-btn">Acheter Standard</a>
+                </div>
+            </div>
+            <div class="ticket-card vip reveal">
+                <div class="ticket-header">
+                    <div class="ticket-type">VIP</div>
+                    <div class="ticket-price">2,500 <span class="currency">GDES</span></div>
+                </div>
+                <div class="ticket-body">
+                    <ul class="ticket-perks">
+                        <li>Siège VIP première rangée</li>
+                        <li>Accès lounge VIP privé</li>
+                        <li>Boissons et snacks inclus</li>
+                        <li>Rencontre avec les combattants</li>
+                        <li>QR code billet numérique</li>
+                    </ul>
+                    <a href="/boxtobox-tickets/" class="btn btn-gold ticket-btn">Acheter VIP</a>
+                </div>
+            </div>
+        </div>
+        <p class="ticket-note reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Paiement sécurisé — Confirmation instantanée par WhatsApp
+        </p>
+    </div>
+</section>
+
+<!-- LIVESTREAM -->
+<section class="section livestream" id="live">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Diffusion en direct</p>
+            <h2 class="section-title">Regarder en direct</h2>
+            <p class="section-subtitle">Suivez chaque round en direct sur YouTube. Replay disponible après l'événement.</p>
+        </div>
+        <div class="livestream-content">
+            <div class="video-wrapper reveal">
+                <div class="video-placeholder">
+                    <div class="live-badge">À Venir</div>
+                    <div class="play-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                    <span class="video-status">Diffusion le 30 Mai</span>
+                </div>
+            </div>
+            <div class="countdown-panel reveal">
+                <div class="countdown-label">Compte à rebours</div>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-block"><div class="countdown-num" id="cd-days">--</div><div class="countdown-unit">Jours</div></div>
+                    <div class="countdown-block"><div class="countdown-num" id="cd-hours">--</div><div class="countdown-unit">Heures</div></div>
+                    <div class="countdown-block"><div class="countdown-num" id="cd-mins">--</div><div class="countdown-unit">Minutes</div></div>
+                    <div class="countdown-block"><div class="countdown-num" id="cd-secs">--</div><div class="countdown-unit">Secondes</div></div>
+                </div>
+                <div class="stream-actions">
+                    <a href="/boxtobox-live/" class="btn btn-red">Regarder en Live</a>
+                    <a href="#" class="btn btn-outline" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);font-size:0.75rem;">Recevoir un rappel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SPONSORS -->
+<section class="section sponsors" id="sponsors">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Partenaires</p>
+            <h2 class="section-title">Partenaires & Sponsors</h2>
+            <p class="section-subtitle">Les marques qui rendent Batay San Fwontyè possible.</p>
+        </div>
+        <div class="sponsor-categories reveal">
+            <div><div class="sponsor-cat-label">Connectivité</div><div class="sponsor-logos"><div class="sponsor-logo">Votre Logo</div><div class="sponsor-logo">Votre Logo</div></div></div>
+            <div><div class="sponsor-cat-label">Diffusion</div><div class="sponsor-logos"><div class="sponsor-logo">Votre Logo</div><div class="sponsor-logo">Votre Logo</div></div></div>
+            <div><div class="sponsor-cat-label">Banque / Finance</div><div class="sponsor-logos"><div class="sponsor-logo">Votre Logo</div><div class="sponsor-logo">Votre Logo</div></div></div>
+            <div><div class="sponsor-cat-label">Betting &bull; Beverage &bull; Food</div><div class="sponsor-logos"><div class="sponsor-logo">Votre Logo</div><div class="sponsor-logo">Votre Logo</div><div class="sponsor-logo">Votre Logo</div></div></div>
+        </div>
+        <div class="sponsor-ctas reveal">
+            <a href="/boxtobox-sponsors/" class="btn btn-red">Télécharger dossier sponsor</a>
+            <a href="/boxtobox-sponsors/" class="btn btn-outline">Demander le media kit</a>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section experience">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">Sur Place</p>
+            <h2 class="section-title">Expérience sur place</h2>
+            <p class="section-subtitle">Plus qu'un combat — une expérience complète pour toute la famille.</p>
+        </div>
+        <div class="experience-grid reveal">
+            <div class="exp-card"><span class="exp-icon">🍖</span><div class="exp-name">Food Village</div></div>
+            <div class="exp-card"><span class="exp-icon">🥂</span><div class="exp-name">Lounge VIP</div></div>
+            <div class="exp-card"><span class="exp-icon">🏢</span><div class="exp-name">Stands Sponsors</div></div>
+            <div class="exp-card"><span class="exp-icon">🎰</span><div class="exp-name">Zone Betting</div></div>
+            <div class="exp-card"><span class="exp-icon">📶</span><div class="exp-name">Zone WiFi</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- FUTURE VISION -->
+<section class="section future">
+    <div class="section-inner">
+        <div class="reveal">
+            <p class="section-label">La Vision</p>
+            <h2 class="section-title">La suite</h2>
+            <p class="section-subtitle">Batay San Fwontyè n'est que le début d'un mouvement sportif haïtien.</p>
+        </div>
+        <div class="timeline reveal">
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">30 Mai 2026</div><div class="timeline-title">Événement 1 — Batay San Fwontyè</div><div class="timeline-desc">Le premier combat international Haïti vs Dominican Republic au Parc Sainte-Thérèse.</div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">Chaque 6 Mois</div><div class="timeline-title">Événements récurrents</div><div class="timeline-desc">Un calendrier régulier d'événements de combat, grandissant en taille et en portée internationale.</div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">2027</div><div class="timeline-title">Académie de Combat</div><div class="timeline-desc">Formation professionnelle pour les jeunes talents haïtiens en boxe et MMA.</div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-date">2028+</div><div class="timeline-title">Circuit International</div><div class="timeline-desc">Expansion vers un circuit caribéen et international de combat professionnel.</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo"><img src="img/boxtobox-logo.jpg" alt="Boxe To Boxe" style="height:50px;border-radius:4px;"></div>
+            <p class="footer-tagline">Box To Box & 48HoursReady.com Présentent<br>Batay San Fwontyè<br><em>Combat. Culture. Connexion.</em></p>
+            <div class="footer-socials"><a href="#">IG</a><a href="#">FB</a><a href="#">YT</a></div>
+        </div>
+        <div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="/boxtobox/">Accueil</a></li><li><a href="/boxtobox-tickets/">Tickets</a></li><li><a href="/boxtobox-live/">Livestream</a></li><li><a href="/boxtobox-sponsors/">Sponsors</a></li></ul></div>
+        <div><div class="footer-col-title">Informations</div><ul class="footer-links"><li><a href="/boxtobox-media/">Media</a></li><li><a href="/boxtobox-about/">À Propos</a></li><li><a href="/boxtobox-contact/">Contact</a></li></ul></div>
+        <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="#">WhatsApp</a></li><li><a href="#">Email</a></li><li><a href="#">Instagram</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 Box To Box. Tous droits réservés.</span>
+        <span style="display:flex;align-items:center;gap:8px;">Powered by <a href="https://48hoursready.com"><img src="img/48hoursready-logo.jpg" alt="48HoursReady" style="height:28px;border-radius:3px;"></a></span>
+    </div>
+</footer>
+
+<!-- MOBILE FLOATING CTAs -->
+<div class="mobile-ctas">
+    <a href="/boxtobox-tickets/" class="btn btn-red">Tickets</a>
+    <a href="/boxtobox-live/" class="btn btn-blue">Live</a>
+    <a href="#" class="btn btn-whatsapp">WhatsApp</a>
+</div>
+
+<script>
+function updateCountdown() {
+    const eventDate = new Date('2026-05-30T19:00:00-04:00');
+    const now = new Date();
+    const diff = eventDate - now;
+    if (diff <= 0) { ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00'); return; }
+    document.getElementById('cd-days').textContent = String(Math.floor(diff / 864e5)).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(Math.floor((diff % 864e5) / 36e5)).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(Math.floor((diff % 36e5) / 6e4)).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(Math.floor((diff % 6e4) / 1e3)).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), i * 80); observer.unobserve(entry.target); }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+reveals.forEach(el => observer.observe(el));
+
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 80 ? '0 2px 8px rgba(0,0,0,0.12)' : '0 1px 4px rgba(0,0,0,0.08)';
+});
+</script>
+
+</body>
+</html>
